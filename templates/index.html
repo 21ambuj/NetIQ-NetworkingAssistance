@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Networking Assistant Chatbot</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f5f9;
+        color: #333;
+      }
+
+      header {
+        background: linear-gradient(to bottom, cyan, indigo);
+        padding: 20px 20px;
+        text-align: center;
+        color: #ffffff;
+      }
+
+      header h1 {
+        font-size: 2.5rem;
+        margin: 0;
+      }
+
+      header p {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        opacity: 0.9;
+      }
+
+      .image-section {
+        text-align: center;
+        margin: 40px 0;
+      }
+
+      .image-section img {
+        width: 200px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .image-section img:hover {
+        transform: scale(1.05);
+      }
+
+      iframe {
+        display: block;
+        margin: 0 auto;
+        border: none;
+        border-radius: 12px;
+        margin-top: 30px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+
+      button.speak-button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 10px;
+        background-color: #10b981;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+        transition: background-color 0.3s ease;
+      }
+
+      button.speak-button:hover {
+        background-color: #059669;
+      }
+
+      h2 {
+        text-align: center;
+        margin-top: 40px;
+        color: #1f2937;
+      }
+
+      .voice-chat-container {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        padding: 30px;
+        max-width: 600px;
+        margin: 40px auto;
+        text-align: center;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .voice-chat-container p {
+        font-size: 18px;
+        margin: 10px 0;
+      }
+
+      #footer-section {
+        
+        background: linear-gradient(to bottom, cyan, indigo);
+        padding: 30px 20px;
+        color: white;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      #footer-section h2, #footer-section h3 {
+        padding-bottom: 20px;
+      }
+
+      #footer-section p, #footer-section a {
+        padding-bottom: 20px;
+      }
+      h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+/* Centering the form and adding white shadow */
+.form-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.6);
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+}
+
+.form-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.form-container p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #666;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.form-section input,
+.form-section textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+.form-section textarea {
+    height: 150px;
+    resize: none;
+}
+
+.form-section button {
+    width: 100%;
+    max-width: 600px;
+    padding: 14px;
+    background: linear-gradient(to right, #6366f1, #06b6d4);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+
+.form-section button:hover {
+    background: linear-gradient(to right, #4f46e5, #db2777, #0891b2);
+}
+
+
+
+    </style>
+  </head>
+  <body>
+    
+
+    <div id="main-content">
+      <header style="height: 90px; position: relative;">
+        <div>
+          <h1 style="margin: 0; font-size: 2.5rem;">NetIQ-Networking Assistant</h1>
+          <p style="font-size: 1.2rem; margin-top: 10px; opacity: 0.9;">Your Professional AI Companion for Network Queries</p>
+        </div>
+      
+        <button onclick="logout()" style="
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          background-color: #ff5252;
+          color: white;
+          border: none;
+          padding: 8px 16px;
+          border-radius: 8px;
+          font-size: 14px;
+          cursor: pointer;
+        ">
+          Logout
+        </button>
+      </header>
+      
+      <script>
+      function logout() {
+        // Perform logout actions here
+        // Example: redirect to login page
+        window.location.href = "../home.php";
+      }
+      </script>
+      
+      
+    
+      <h1>One to One Voice Interaction with NetIQ VoiceBot </h1>
+    <div class="image-section">
+      <button onclick="startListening()" style="all: unset; cursor: pointer;">
+        <img src="https://cdn.dribbble.com/userupload/32122583/file/original-400827bdf243931c8ffd26a268a837ce.gif" 
+             alt="Bot Banner" 
+             style="width: 80%; max-width: 600px; border-radius: 20px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);" />
+      </button>
+    </div>
+    
+      <h1>Live Chat NetIQ</h1>
+      <iframe
+        src="https://cdn.botpress.cloud/webchat/v2.3/shareable.html?configUrl=https://files.bpcontent.cloud/2025/04/21/16/20250421160557-1PDY6P62.json"
+        width="90%"
+        height="600"
+      ></iframe>
+     
+
+      <div class="image-section">
+        <img
+          src="https://img.freepik.com/premium-vector/ai-chat-bot-technology-concept-people-chatting-with-robot-asking-questions-receiving-answers_36358-1867.jpg"
+          alt="Feature 1"
+          style="
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+          "
+          onmouseover="this.style.transform='scale(1.05)'"
+          onmouseout="this.style.transform='scale(1)'"
+        />
+       
+        <img
+          src="https://itsm.tools/wp-content/uploads/2021/11/bot-and-human.png"
+          alt="Feature 3"
+          style="
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+          "
+          onmouseover="this.style.transform='scale(1.05)'"
+          onmouseout="this.style.transform='scale(1)'"
+        />
+      </div>
+      <div class="voice-chat-container">
+        <img
+          src="https://i.pinimg.com/originals/7d/9b/1d/7d9b1d662b28cd365b33a01a3d0288e1.gif"
+          alt="Feature 2"
+          style="
+            width: 250px;
+            height: 180px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+          "
+          onmouseover="this.style.transform='scale(1.05)'"
+          onmouseout="this.style.transform='scale(1)'"
+        />
+        <h2>Voice Chat with NetIQ</h2>
+        <button class="speak-button" onclick="startListening()">🎙️ Start Voice Chat</button>
+        <p id="userText" style="text-align: center; display: none;">You: </p>
+        <p id="botText" style="text-align: center; display: none;">Bot: </p>
+      </div>
+    </div>
+    
+
+    <div class="image-section">
+      <img
+        src="https://cdn.dribbble.com/userupload/32122583/file/original-400827bdf243931c8ffd26a268a837ce.gif"
+        alt="Feature 4"
+        style="
+          width: 250px;
+          height: 180px;
+          object-fit: cover;
+          margin: 10px;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          transition: transform 0.2s;
+        "
+        onmouseover="this.style.transform='scale(1.05)'"
+        onmouseout="this.style.transform='scale(1)'"
+      />
+      <div class="feedback-container">
+        <h1>Give Your Feedback here</h1>
+        <p>We value your feedback! Please fill out the form below:</p>
+        <form action="contactprocess.php" method="POST" class="feedback-form">
+            <div class="form-section">
+                
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send </button>
+            </div>
+        </form>
+    </div>
+    
+    
+    <div id="footer-section">
+      <div>
+        <h2>About Us</h2>
+        <p>
+          The NetIQ is a powerful platform designed to assist you with networking-related queries, providing accurate answers to help students and professionals in their networking journey.
+        </p>
+      </div>
+    
+      <div>
+        <h3>Features</h3>
+        <ul style="list-style-type: none; padding: 0;">
+          <li>Real-time answers to networking questions</li>
+          <li>Interactive voice chat for seamless communication</li>
+          <li>User-friendly interface for easy navigation</li>
+        </ul>
+      </div> <!-- 🛠️ This closing </div> was missing -->
+    
+      <div>
+        <h3>Contact Us</h3>
+        <p>For inquiries or assistance, feel free to get in touch with us:</p>
+    
+        <p><strong>Phone:</strong> <a href="tel:+919369572534" style="color: white; text-decoration: none;">+91 9369572534</a></p>
+        <p><strong>Email:</strong> <a href="mailto:ambuj20maurya@gmail.com" style="color: white; text-decoration: none;">info@networkingassistant.com</a></p>
+        <p><strong>Location:</strong> Mirzapur</p>
+      </div>
+    
+      <p>&copy; 2025 Networking Assistant. All rights reserved.</p>
+    </div>
+    
+
+    <script>
+      
+
+      function startListening() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.start();
+
+        recognition.onresult = function(event) {
+          const user_input = event.results[0][0].transcript;
+          document.getElementById("userText").textContent = "You: " + user_input;
+          document.getElementById("userText").style.display = "block";
+
+          fetch('/get_response', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_input: user_input })
+          })
+          .then(res => res.json())
+          .then(data => {
+            const botReply = data.response;
+            document.getElementById("botText").textContent = "NetIQ: " + botReply;
+            document.getElementById("botText").style.display = "block";
+
+            const utterance = new SpeechSynthesisUtterance(botReply);
+            speechSynthesis.speak(utterance);
+          });
+        };
+      }
+     
+      function submitFeedback(event) {
+  event.preventDefault(); // Prevent form from reloading the page
+
+  // Get values from the form
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const contact = document.getElementById('contact').value;
+  const message = document.getElementById('message').value;
+
+  // Display an alert with the submitted details
+  alert(`Feedback Submitted Successfully!\n\nName: ${name}\nEmail: ${email}\nContact: ${contact}\nMessage: ${message}`);
+
+  // Optionally, you can reset the form after submission
+  document.getElementById('feedbackForm').reset();
+}
+
+
+    </script>
+     <script>
+     function sendMessage() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("userEmail").value;
+    const message = document.getElementById("message").value;
+    
+    if (name && email && message) {
+        // Send the data to your Flask backend
+        fetch(`http://localhost:5000/get?user_input=${encodeURIComponent(userInput)}`, {  // <-- change '/your-endpoint' to your real Flask API endpoint
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                name: name,
+                email: email,
+                message: message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+            alert("Message sent successfully!");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert("Error sending message.");
+        });
+    } else {
+        alert("Please fill out all fields.");
+    }
+}
+
+  </script>
+  </body>
+</html>
