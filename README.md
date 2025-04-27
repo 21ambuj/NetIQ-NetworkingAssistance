@@ -82,8 +82,5 @@ login.php, register.php, forgot_password.php, logout.php	User Authentication (Lo
 verify_otp.php	OTP verification functionality for security during registration or password recovery.
 
 
-## 📸 Screenshot
 
-![Project Screenshot]
-(img/screenshot.png)
 
