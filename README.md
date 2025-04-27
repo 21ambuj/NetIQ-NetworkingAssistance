@@ -11,13 +11,18 @@
 
 ## 📚 Project Overview
 
-**Your Project Name** is a [short 1–2 line description here].  
-This project [explain what it does — your Text-to-Speech bot / form sender / etc.].
+NetIQ VoiceBot: A Professional Networking Assistant is an intelligent chatbot that helps users by providing networking tips, professional contact suggestions, and general assistance regarding career networking.
+
+.  
+key features:-
+1.The bot responds with concise and professional answers about networking and career-building.
+2.Text responses are converted into speech using Murf API for a more engaging experience.
+3.Ability to handle open-ended networking queries and provide tips on professional networking.
 
 It is built using:
 - 🌐 Flask (for backend server)
 - 🗣️ Text-to-Speech API
-- 🔥 Frontend (HTML/CSS/JavaScript)
+- 🔥 Frontend (HTML/CSS/JavaScript/Python/PHP/Mysql)
 - 🚀 Fetch API integration for dynamic communication
 
 
